@@ -1,0 +1,37 @@
+pipeline:
+  name: reevzee-firstpipe
+  identifier: reevzeefirstpipe
+  projectIdentifier: REEVZEE_FIRST
+  orgIdentifier: default
+  tags: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: reevzee
+        repoName: go-app-cicd
+        build: <+input>
+  stages:
+    - stage:
+        name: build app
+        identifier: build_app
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Docker
+            spec: {}
+          execution:
+            steps:
+              - step:
+                  type: BuildAndPushDockerRegistry
+                  name: BuildAndPushDockerRegistry_1
+                  identifier: BuildAndPushDockerRegistry_1
+                  spec:
+                    connectorRef: reevzee_dock
+                    repo: laceworklew
+                    tags:
+                      - fuzzy
