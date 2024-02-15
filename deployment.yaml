@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: go-app
-        image: reevzee/go-hello-world:latest
+        image: laceworklew/go-app-style:fuzzy
         ports:
         - containerPort: 8080
         env:
